@@ -18,6 +18,8 @@ const db = mongoose.connection
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log('Connected to Database'))
 
+app.use('/js', express.static(__dirname + 'public/js'))
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 })

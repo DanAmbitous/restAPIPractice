@@ -1,71 +1,83 @@
-<form action="/members" method="POST">
-  <h1>Sign Up!</h1>
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" required> 
-  <label for="username">Username</label>
-  <input type="text" id="username" name="username" required>
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password" required>
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="public/js/script.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+  <form action="/members" method="POST">
+    <h1>Sign Up!</h1>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required> 
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email">
+    <br>
+    <button type="submit" id="submit">Submit</button>
+  </form>
+  
+  <div class="users">
+  
+  </div>
+  
   <br>
-  <button type="submit" id="submit">Submit</button>
-</form>
-
-<div class="users">
-
-</div>
-
-<br>
-
-<h2>Find a specific User</h2>
-
-<label for="search-user">User id</label>
-<input id="search-user" type="text">
-<button id="search-user-button">Search User</button>
-
-<div class="specific-user">
-
-</div>
-
-<br>
-
-<h2>Delete all users</h2>
-
-<button id="delete-all-users">Delete All users</button>
-
-<div class="outcome">
-
-</div>
-
-<br>
-
-<h2>Delete Specific User</h2>
-
-<input id="delete-specific-user-input" type="text">
-
-<button id="delete-specific-user">Delete a user</button>
-
-<div class="specific-outcome">
-
-</div>
-
-<h2>Editation</h2>
-
-<label for="user-id">User ID</label>
-<input type="text" id="user-id" name="user-id"> 
-<label for="name-patch">Name</label>
-<input type="text" id="name-patch" name="name"> 
-<label for="username-patch">Username</label>
-<input type="text" id="username-patch" name="username">
-<label for="password-patch">Password</label>
-<input type="password" id="password-patch" name="password">
-<label for="email-patch">Email</label>
-<input type="email" id="email-patch" name="email">
-
-<button id="edit-button">Edit</button>
-
-<div class="outcome-patched"></div>
+  
+  <h2>Find a specific User</h2>
+  
+  <label for="search-user">User id</label>
+  <input id="search-user" type="text">
+  <button id="search-user-button">Search User</button>
+  
+  <div class="specific-user">
+  
+  </div>
+  
+  <br>
+  
+  <h2>Delete all users</h2>
+  
+  <button id="delete-all-users">Delete All users</button>
+  
+  <div class="outcome">
+  
+  </div>
+  
+  <br>
+  
+  <h2>Delete Specific User</h2>
+  
+  <input id="delete-specific-user-input" type="text">
+  
+  <button id="delete-specific-user">Delete a user</button>
+  
+  <div class="specific-outcome">
+  
+  </div>
+  
+  <h2>Editation</h2>
+  
+  <label for="user-id">User ID</label>
+  <input type="text" id="user-id" name="user-id"> 
+  <label for="name-patch">Name</label>
+  <input type="text" id="name-patch" name="name"> 
+  <label for="username-patch">Username</label>
+  <input type="text" id="username-patch" name="username">
+  <label for="password-patch">Password</label>
+  <input type="password" id="password-patch" name="password">
+  <label for="email-patch">Email</label>
+  <input type="email" id="email-patch" name="email">
+  
+  <button id="edit-button">Edit</button>
+  
+  <div class="outcome-patched"></div>
+</body>
+</html>
 
 <script>
   const url = "http://localhost:8985/members"
@@ -197,5 +209,9 @@
 
   button {
     cursor: pointer;
+  }
+
+  .users {
+    font-size: 1em;
   }
 </style>
