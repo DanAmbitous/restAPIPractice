@@ -120,15 +120,15 @@
 
     document.querySelector('.users').textContent = JSON.stringify(data)
 
-    async function reFetchData() {
-      const responseFlow = await fetch('http://localhost:8985/members')
-      const data = await responseFlow.json()
-
-      return await JSON.stringify(data)
-    }
-
     setTimeout(() => {
-      document.querySelector('.users').textContent = reFetchData()
+      async function reFetchData() {
+        const responseFlow = await fetch('http://localhost:8985/members')
+        const data = await responseFlow.json()
+
+        document.querySelector('.users').textContent = JSON.stringify(data)
+      }
+    
+    reFetchData() 
     }, 1000)
   }
 </script>
