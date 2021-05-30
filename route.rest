@@ -15,11 +15,11 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:8985/members/60b2c8def3d1cf4e449832df
+PATCH http://localhost:8985/members/60b3d3298b49dd271812742a
 Content-Type: application/json
 
 {
-  "email": "james@gmail.com"
+  "name": "asdfasdfasdf"
 }
 
 ###
