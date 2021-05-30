@@ -1,0 +1,31 @@
+GET http://localhost:8985/members
+
+###
+
+GET http://localhost:8985/members/60b2c8def3d1cf4e449832df
+
+###
+
+POST http://localhost:8985/members
+Content-Type: application/json
+
+{
+  "email": "james@gmail.com"
+}
+
+###
+
+PATCH http://localhost:8985/members/60b2c8def3d1cf4e449832df
+Content-Type: application/json
+
+{
+  "email": "james@gmail.com"
+}
+
+###
+
+DELETE http://localhost:8985/members/60b3b30b6b10601cf4fccc3e
+
+###
+
+DELETE http://localhost:8985/members

@@ -1,0 +1,147 @@
+<form action="/members" method="POST">
+  <h1>Sign Up!</h1>
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required> 
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username" required>
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email">
+  <br>
+  <button type="submit" id="submit">Submit</button>
+</form>
+
+<div class="users">
+
+</div>
+
+<br>
+
+<h2>Find a specific User</h2>
+
+<label for="search-user">User id</label>
+<input id="search-user" type="text">
+<button id="search-user-button">Search User</button>
+
+<div class="specific-user">
+
+</div>
+
+<br>
+
+<h2>Delete all users</h2>
+
+<button id="delete-all-users">Delete All users</button>
+
+<div class="outcome">
+
+</div>
+
+<br>
+
+<h2>Delete Specific User</h2>
+
+<input id="delete-specific-user-input" type="text">
+
+<button id="delete-specific-user">Delete a user</button>
+
+<div class="specific-outcome">
+
+</div>
+
+<script>
+  const url = "http://localhost:8985/members"
+
+  fetchingData(url)
+
+  async function fetchingData(url) {
+    const responseFlow = await fetch(url)
+    const jsonification = await responseFlow.json()
+
+    console.log(jsonification)
+
+    document.querySelector('.users').textContent = JSON.stringify(jsonification)
+  }
+
+  document.addEventListener('click', even => {
+    switch (event.target.id) {
+      case 'search-user-button':
+        fetchingDataSpecific(`http://localhost:8985/members/${document.querySelector('#search-user').value}`)
+        break
+      case 'delete-all-users':
+        deletingAllUsers()
+        break 
+      case 'delete-specific-user':
+        deleteSpecificUser()
+        break
+    }
+  })
+
+  async function fetchingDataSpecific(url) {
+    const responseFlow = await fetch(url)
+    const jsonification = await responseFlow.json()
+
+    console.log(jsonification)
+
+    document.querySelector('.specific-user').textContent = JSON.stringify(jsonification)
+  }
+
+  const baseMemberURL = 'http://localhost:8985/members'
+
+  async function deletingAllUsers(url) {
+    try {
+      const response = await fetch('http://localhost:8985/members', {
+        method: "DELETE"
+      })
+
+      const data = await response.json()
+
+      console.log(data)
+
+      document.querySelector('.users').textContent = JSON.stringify(data)
+
+      setTimeout(() => {
+        document.querySelector('.users').textContent = ""
+      }, 1000)
+    } catch (error) {
+        console.log(`ERROR: ${error}`)
+      }
+  } 
+
+  async function deleteSpecificUser() {
+    const response = await fetch(`http://localhost:8985/members/${document.querySelector('#delete-specific-user-input').value}`, {
+      method: 'DELETE'
+    })
+
+    const data = await response.json()
+
+    console.log(data)
+
+    document.querySelector('.users').textContent = JSON.stringify(data)
+
+    async function reFetchData() {
+      const responseFlow = await fetch('http://localhost:8985/members')
+      const data = await responseFlow.json()
+
+      return await JSON.stringify(data)
+    }
+
+    setTimeout(() => {
+      document.querySelector('.users').textContent = reFetchData()
+    }, 1000)
+  }
+</script>
+
+<style>
+  form {
+    display: flex;
+    align-content: space-around;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  button {
+    cursor: pointer;
+  }
+</style>
